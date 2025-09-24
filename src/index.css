@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Neon Landing Page Design System - Dark theme with neon green/cyan accents */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Dark Theme */
+    --background: 205 50% 6%;  /* #0B0F14 */
+    --foreground: 180 12% 94%; /* #E7F2F2 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card & Surface Colors */
+    --card: 205 45% 8%;
+    --card-foreground: 180 12% 94%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 205 50% 6%;
+    --popover-foreground: 180 12% 94%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Primary Colors */
+    --primary: 166 100% 49%; /* #0EE7B7 - Neon Green */
+    --primary-foreground: 205 50% 6%;
+    --primary-glow: 170 100% 50%; /* #00FFC6 - Neon Cyan */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary & Accent Colors */
+    --secondary: 205 35% 15%;
+    --secondary-foreground: 180 12% 94%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 195 100% 82%; /* #9AE6FF - Cool Blue highlights */
+    --accent-foreground: 205 50% 6%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted Colors */
+    --muted: 205 30% 12%;
+    --muted-foreground: 180 8% 70%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* States */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 12% 94%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders & Inputs */
+    --border: 205 25% 20%;
+    --input: 205 25% 18%;
+    --ring: 166 100% 49%;
 
-    --radius: 0.5rem;
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(205 45% 4%));
+    --gradient-card: linear-gradient(145deg, hsl(205 40% 8%), hsl(205 35% 10%));
+
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-neon-strong: 0 0 40px hsl(var(--primary) / 0.5);
+    --shadow-card: 0 8px 32px hsl(205 50% 3% / 0.8);
+    --glow-text: 0 0 20px hsl(var(--primary) / 0.6);
+
+    /* Animation Timings */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +124,171 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Neon Text Effects */
+  .text-neon {
+    color: hsl(var(--primary));
+    text-shadow: var(--glow-text);
+  }
+  
+  .text-neon-glow {
+    color: hsl(var(--primary));
+    text-shadow: var(--shadow-neon-strong);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Gradient Text */
+  .text-gradient-neon {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button Variants */
+  .btn-neon {
+    @apply relative overflow-hidden rounded-lg px-8 py-4 font-medium;
+    background: var(--gradient-neon);
+    box-shadow: var(--shadow-neon);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-neon:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon-strong);
+  }
+
+  .btn-neon-outline {
+    @apply relative overflow-hidden rounded-lg px-8 py-4 font-medium bg-transparent border-2;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-neon-outline:hover {
+    background: hsl(var(--primary) / 0.1);
+    box-shadow: var(--shadow-neon);
+  }
+
+  /* Card Effects */
+  .card-neon {
+    @apply rounded-xl border backdrop-blur-sm;
+    background: var(--gradient-card);
+    border-color: hsl(var(--border));
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-neon-glow {
+    @apply card-neon;
+    box-shadow: var(--shadow-card), var(--shadow-neon);
+  }
+
+  /* Floating Animation */
+  .floating-btn {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Pulse Animation for WhatsApp */
+  .pulse-whatsapp {
+    animation: pulse-whatsapp 2s ease-in-out infinite;
+  }
+
+  /* Ring Animation */
+  .ring-neon {
+    @apply relative;
+  }
+  
+  .ring-neon::before {
+    @apply absolute inset-0 rounded-full opacity-75;
+    content: '';
+    border: 2px solid hsl(var(--primary));
+    animation: ring-pulse 2s ease-in-out infinite;
+  }
+
+  /* Navbar Glass Effect */
+  .navbar-glass {
+    @apply backdrop-blur-md border-b;
+    background: hsl(var(--background) / 0.8);
+    border-color: hsl(var(--border) / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes pulse-glow {
+    0%, 100% {
+      text-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+    }
+    50% {
+      text-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-whatsapp {
+    0%, 100% {
+      box-shadow: 0 0 0 0 #25d366;
+    }
+    50% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+  }
+
+  @keyframes ring-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }
+
+  /* Fade Animations */
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+  
+  .animate-fade-in-left {
+    animation: fade-in-left 0.6s ease-out;
   }
 }
