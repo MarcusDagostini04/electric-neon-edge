@@ -1,95 +1,94 @@
-import { TrendingUp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import marcusAlexandreImage from "@/assets/marcus-alexandre.png";
 
 const About = () => {
+  const handleWhatsAppClick = () => {
+    const url = "https://wa.me/5511964396533";
+    window.open(url, '_blank', 'noopener noreferrer');
+  };
+
   return (
-    <section className="py-20 px-4 bg-background">
+    <section className="py-20 px-4" style={{ backgroundColor: '#0B0B0F' }}>
       <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-montserrat font-bold text-primary mb-6 shadow-neon">
+            Nosso Suporte Especializado
+          </h2>
+          
+          {/* Decorative line */}
+          <div className="w-24 h-0.5 bg-gradient-neon mx-auto mb-12 shadow-neon"></div>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Photo */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-center animate-fade-in">
             <div className="relative">
-              <div className="w-80 h-80 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-neon">
-                <div className="w-full h-full bg-gradient-to-br from-background to-secondary/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 bg-gradient-neon rounded-full flex items-center justify-center text-background font-bold text-2xl">
-                      A
-                    </div>
-                    <p className="text-sm text-muted-foreground">Alexandre</p>
-                    <p className="text-xs text-muted-foreground mt-2">Especialista em Neon</p>
-                  </div>
-                </div>
+              {/* Diffused neon glow background */}
+              <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-2xl scale-110 -z-10"></div>
+              
+              {/* Photo container */}
+              <div className="relative w-80 h-80 rounded-3xl overflow-hidden border-2 border-primary/40 shadow-neon-strong">
+                <img 
+                  src={marcusAlexandreImage} 
+                  alt="Marcus e Alexandre - Suporte Especializado"
+                  className="w-full h-full object-cover object-center grayscale"
+                />
+                
+                {/* Subtle overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
               </div>
-              {/* Neon glow effect */}
-              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-xl -z-10"></div>
+              
+              {/* Additional glow effect */}
+              <div className="absolute inset-0 bg-primary/10 rounded-3xl blur-xl -z-5"></div>
             </div>
           </div>
 
           {/* Right - Content */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-montserrat font-bold mb-6">
-                Quem é <span className="text-gradient-neon">Alexandre</span>
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Mais de 15 anos trabalhando com luminosos e neon, Alexandre já executou 
-                centenas de projetos para empresas, fachadas comerciais e residências.
-              </p>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Formado em elétrica e especializado em alta tensão, ele decidiu compartilhar 
-                todo seu conhecimento prático para formar novos profissionais no mercado.
-              </p>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                <strong className="text-primary">Suporte direto:</strong> Além das aulas, 
-                Alexandre oferece suporte individual via WhatsApp para tirar todas as suas 
-                dúvidas durante o aprendizado.
+          <div className="space-y-8 animate-fade-in">
+            {/* About Alexandre */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-montserrat font-bold text-primary">
+                Alexandre
+              </h3>
+              <div className="w-12 h-0.5 bg-gradient-neon"></div>
+              <p className="text-muted-foreground leading-relaxed">
+                Alexandre tem mais de 30 anos de experiência no mercado de luminosos de neon, 
+                participando da criação e manutenção de centenas de projetos em fachadas, 
+                lojas e empresas. Ele será o mentor técnico, compartilhando segredos e 
+                técnicas que só quem vive o neon há décadas conhece.
               </p>
             </div>
 
-            {/* Progress graphic */}
+            {/* About Marcus */}
             <div className="space-y-4">
-              <h3 className="text-xl font-montserrat font-bold text-foreground flex items-center gap-2">
-                <TrendingUp className="w-6 h-6 text-primary" />
-                Da primeira instalação ao primeiro faturamento
+              <h3 className="text-xl font-montserrat font-bold text-primary">
+                Marcus
               </h3>
-              
-              <div className="relative">
-                {/* Progress line */}
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-neon rounded-full shadow-neon"
-                    style={{ width: '85%' }}
-                  ></div>
-                </div>
-                
-                {/* Progress points */}
-                <div className="flex justify-between mt-4 text-sm">
-                  <div className="text-center">
-                    <div className="w-3 h-3 bg-primary rounded-full mx-auto mb-2"></div>
-                    <span className="text-muted-foreground">Início</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-3 h-3 bg-primary rounded-full mx-auto mb-2"></div>
-                    <span className="text-muted-foreground">Primeira instalação</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-3 h-3 bg-primary rounded-full mx-auto mb-2"></div>
-                    <span className="text-muted-foreground">Primeiros clientes</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-3 h-3 bg-gradient-neon rounded-full mx-auto mb-2 shadow-neon"></div>
-                    <span className="text-primary font-semibold">Renda consistente</span>
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-sm text-muted-foreground text-center mt-4">
-                Média de 2-3 meses para começar a faturar com neon
+              <div className="w-12 h-0.5 bg-gradient-neon"></div>
+              <p className="text-muted-foreground leading-relaxed">
+                Marcus é especialista em materiais, ferramentas e acessórios. 
+                Ele tira dúvidas sobre instalação e garante que você tenha suporte 
+                prático em cada etapa do curso.
               </p>
+            </div>
+
+            {/* WhatsApp CTA */}
+            <div className="pt-6">
+              <button
+                onClick={handleWhatsAppClick}
+                className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-background font-montserrat font-semibold rounded-lg shadow-neon hover:shadow-neon-strong transition-all duration-300 hover:scale-105"
+                aria-label="Tirar dúvidas no WhatsApp"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Tirar dúvidas no WhatsApp
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Decorative elements */}
+        <div className="absolute left-0 top-1/2 w-px h-32 bg-gradient-to-b from-transparent via-primary/40 to-transparent"></div>
+        <div className="absolute right-0 top-1/2 w-px h-32 bg-gradient-to-b from-transparent via-primary/40 to-transparent"></div>
       </div>
     </section>
   );
